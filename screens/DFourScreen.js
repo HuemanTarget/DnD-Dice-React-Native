@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Shake } from "react-native-motion";
 
 const DFourScreen = () => {
   const [dFour, setDFour] = useState(require("../assets/dice/d4/d4_face3.png"));
@@ -38,9 +39,10 @@ const DFourScreen = () => {
         backgroundColor: "red",
       }}
     >
-      <Text>Dice4 Screen</Text>
       <View>
-        <Image style={styles.dice} source={dFour} />
+        <Shake value={dFour} type="timing">
+          <Image style={styles.dice} source={dFour} useNativeDriver={true} />
+        </Shake>
       </View>
       <View>
         <TouchableOpacity onPress={rollButtonPressed}>
@@ -61,6 +63,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   dice: {
+    zIndex: 100,
+    elevation: 100,
     width: 200,
     height: 200,
     marginBottom: 50,
