@@ -37,7 +37,7 @@ const WelcomeScreen = () => {
           D&D Dice
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate("Dice")}>
-          <Text>Hello World</Text>
+          <Text style={styles.gamebutton}>Enter The Realm</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -45,3 +45,19 @@ const WelcomeScreen = () => {
 };
 
 export default WelcomeScreen;
+
+const styles = StyleSheet.create({
+  gamebutton: {
+    zIndex: 1,
+    marginTop: 45,
+    marginBottom: 150,
+    fontSize: 20,
+    color: "white",
+    fontWeight: "bold",
+    borderWidth: 2,
+    paddingVertical: 8,
+    paddingHorizontal: 40,
+    borderRadius: 5,
+    borderColor: "white",
+  },
+});
