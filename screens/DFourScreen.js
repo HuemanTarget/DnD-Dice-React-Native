@@ -41,7 +41,7 @@ const DFourScreen = () => {
     >
       <View>
         <Shake value={dFour} type="timing">
-          <Image style={styles.dice} source={dFour} useNativeDriver={true} />
+          <Image style={styles.dice} source={dFour} />
         </Shake>
       </View>
       <View>
@@ -63,15 +63,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   dice: {
-    zIndex: 100,
-    elevation: 100,
+    zIndex: 1000,
+    elevation: 1000,
     width: 200,
     height: 200,
     marginBottom: 50,
   },
   gamebutton: {
-    zIndex: 100,
-    elevation: 100,
+    zIndex: 1000,
+    elevation: 1000,
     marginTop: 45,
     marginBottom: 150,
     fontSize: 20,

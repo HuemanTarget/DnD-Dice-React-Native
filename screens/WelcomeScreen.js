@@ -48,8 +48,8 @@ export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   gamebutton: {
-    zIndex: 100,
-    elevation: 100,
+    zIndex: 1000,
+    elevation: 1000,
     marginTop: 45,
     marginBottom: 150,
     fontSize: 20,
