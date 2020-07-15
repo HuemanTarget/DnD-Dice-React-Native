@@ -11,23 +11,79 @@ const DFourScreen = () => {
     return Math.floor(Math.random() * 4) + 1;
   };
 
-  const rollButtonPressed = () => {
-    let rNumber = getRandomValue();
+  // const randomFace = () => {
+  //   let rNumber = getRandomValue();
 
-    switch (rNumber) {
-      case 1:
-        setDFour(require("../assets/dice/d4/d4_face1.png"));
-        break;
-      case 2:
-        setDFour(require("../assets/dice/d4/d4_face2.png"));
-        break;
-      case 3:
-        setDFour(require("../assets/dice/d4/d4_face3.png"));
-        break;
-      case 4:
-        setDFour(require("../assets/dice/d4/d4_face4.png"));
-        break;
-    }
+  //   switch (rNumber) {
+  //     case 1:
+  //       setDFour(require("../assets/dice/d4/d4_face1.png"));
+  //       break;
+  //     case 2:
+  //       setDFour(require("../assets/dice/d4/d4_face2.png"));
+  //       break;
+  //     case 3:
+  //       setDFour(require("../assets/dice/d4/d4_face3.png"));
+  //       break;
+  //     case 4:
+  //       setDFour(require("../assets/dice/d4/d4_face4.png"));
+  //       break;
+  //   }
+  // };
+
+  const rollButtonPressed = () => {
+    setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
+    // setTimeout(() => {
+    //   setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
+    // }, 300);
+    // randomFace();
+    let promise1 = new Promise(function (resolve, reject) {
+      setTimeout(() => {
+        console.log("2second");
+        // setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
+        resolve();
+      }, 700);
+    });
+
+    // let promise2 = new Promise(function (resolve, reject) {
+    //   setTimeout(function b() {
+    //     alert("Hello B");
+    //     resolve();
+    //   }, 3000);
+    // });
+
+    // let promise3 = new Promise(function (resolve, reject) {
+    //   setTimeout(function c() {
+    //     alert("Hello C");
+    //     resolve();
+    //   }, 3000);
+    // });
+
+    Promise.all([promise1]).then(function () {
+      function d() {
+        let rNumber = getRandomValue();
+
+        switch (rNumber) {
+          case 1:
+            setDFour(require("../assets/dice/d4/d4_face1.png"));
+            break;
+          case 2:
+            setDFour(require("../assets/dice/d4/d4_face2.png"));
+            break;
+          case 3:
+            setDFour(require("../assets/dice/d4/d4_face3.png"));
+            break;
+          case 4:
+            setDFour(require("../assets/dice/d4/d4_face4.png"));
+            break;
+          default:
+            if (rNumber === rNumber) {
+              setDFour(require("../assets/dice/d4/d4_face1.png"));
+            }
+        }
+        console.log(rNumber);
+      }
+      d();
+    });
   };
 
   return (
@@ -40,9 +96,9 @@ const DFourScreen = () => {
       }}
     >
       <View>
-        <Shake value={dFour} type="timing">
-          <Image style={styles.dice} source={dFour} />
-        </Shake>
+        {/* <Shake value={dFour} type="timing"> */}
+        <Image style={styles.dice} source={dFour} />
+        {/* </Shake> */}
       </View>
       <View>
         <TouchableOpacity onPress={rollButtonPressed}>
