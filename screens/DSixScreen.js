@@ -5,15 +5,38 @@ import { Shake } from "react-native-motion";
 
 const DSixScreen = () => {
   const [dSix, setDSix] = useState(require("../assets/dice/d6/d6_face3.png"));
+  const [prevNum, setPrevNum] = useState(0);
 
   const getRandomValue = () => {
-    //add 1 to random math so you don't get a zero
     return Math.floor(Math.random() * 6) + 1;
   };
 
-  const rollButtonPressed = () => {
-    let rNumber = getRandomValue();
+  let rNumber = getRandomValue();
 
+  const rollButtonPressed = () => {
+    if (rNumber === prevNum) {
+      const sameNums = () => {
+        Alert.alert("You Rolled The Same Number", "Please Continue");
+      };
+      sameNums();
+    }
+    setDSix(require("../assets/dice/d6/d6_anim.gif"));
+
+    let promise1 = new Promise(function (resolve, reject) {
+      setTimeout(() => {
+        resolve();
+      }, 1800);
+    });
+
+    Promise.all([promise1]).then(function () {
+      function d() {
+        randomFace();
+      }
+      d();
+    });
+  };
+
+  const randomFace = () => {
     switch (rNumber) {
       case 1:
         setDSix(require("../assets/dice/d6/d6_face1.png"));
@@ -71,8 +94,8 @@ const styles = StyleSheet.create({
   dice: {
     zIndex: 1000,
     elevation: 1000,
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
     marginBottom: 50,
   },
   gamebutton: {

@@ -11,126 +11,35 @@ import { useNavigation } from "@react-navigation/native";
 import { Shake } from "react-native-motion";
 
 const DFourScreen = () => {
-  const [dFour, setDFour] = useState(require("../assets/dice/d4/d4_face3.png"));
-  const [prevNum, setPrevNum] = useState(0);
-  const [gifTwo, setGifTwo] = useState(
-    require("../assets/dice/d4/4d_face_anim2.gif")
+  const [dFour, setDFour] = useState(
+    require("../assets/dice/d4/d4_face2_3_rev.png")
   );
-
-  // const prevRNumRef = useRef();
-  // useEffect(() => {
-  //   prevRNumRef.current = rNumber;
-  // }, []);
-
-  // const prevRNum = prevRNumRef.current;
-  // console.log(prevRNum);
+  const [prevNum, setPrevNum] = useState(0);
 
   const getRandomValue = () => {
-    //add 1 to random math so you don't get a zero
     return Math.floor(Math.random() * 12) + 1;
   };
 
   let rNumber = getRandomValue();
 
-  // console.log(prevNum);
-
-  // const randomFace = () => {
-  //   let rNumber = getRandomValue();
-
-  //   switch (rNumber) {
-  //     case 1:
-  //       setDFour(require("../assets/dice/d4/d4_face1.png"));
-  //       break;
-  //     case 2:
-  //       setDFour(require("../assets/dice/d4/d4_face2.png"));
-  //       break;
-  //     case 3:
-  //       setDFour(require("../assets/dice/d4/d4_face3.png"));
-  //       break;
-  //     case 4:
-  //       setDFour(require("../assets/dice/d4/d4_face4.png"));
-  //       break;
-  //   }
-  // };
-
   const rollButtonPressed = () => {
     if (rNumber === prevNum) {
       const sameNums = () => {
         Alert.alert("You Rolled The Same Number", "Please Continue");
-        // setDFour(require("../assets/dice/d4/d4_face2.png"));
-        // setPrevNum(prevNum + 1);
-        // console.log("did I do anything 1");
-        // console.log(`same numbers inside ${prevNum}`);
       };
       sameNums();
-      // alert("rolled same number");
-      // setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
-      // // setDFour(require("../assets/dice/d4/d4_face2.png"));
-
-      // rollButtonPressed();
-      // setDFour(require("../assets/dice/d4/d4_face2.png"));
-      // setPrevNum(prevNum + 1);
-
-      // return setDFour(rNumber);
     }
     setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
-    // if (rNumber === prevNum) {
-    //   // alert("rolled same number");
-    //   // setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
-    //   // setDFour(require("../assets/dice/d4/d4_face2.png"));
-    //   setDFour(rNumber);
-    //   setPrevNum(prevNum + 1);
-    // }
-    // setTimeout(() => {
-    //   setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
-    // }, 300);
-    // randomFace();
-    // if (rNumber === prevNum) {
-    //   // alert("rolled same number");
-    //   setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
-    //   // setDFour(require("../assets/dice/d4/d4_face2.png"));
-    //   setDFour(rNumber);
-    //   setPrevNum(prevNum + 1);
-    // }
 
     let promise1 = new Promise(function (resolve, reject) {
       setTimeout(() => {
-        // if (rNumber === prevNum) {
-        //   // alert("rolled same number");
-        //   // setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
-        //   // // setDFour(require("../assets/dice/d4/d4_face2.png"));
-
-        //   // rollButtonPressed();
-        //   return setDFour(rNumber);
-        //   // setPrevNum(prevNum + 1);
-        //   // return setDFour(rNumber);
-        // }
-
-        // setDFour(require("../assets/dice/d4/4d_face_anim.gif"));
         resolve();
       }, 1800);
     });
 
     Promise.all([promise1]).then(function () {
       function d() {
-        // let rNumber = getRandomValue();
-
         randomFace();
-
-        // switch (rNumber) {
-        //   case 1:
-        //     setDFour(require("../assets/dice/d4/d4_face1.png"));
-        //     break;
-        //   case 2:
-        //     setDFour(require("../assets/dice/d4/d4_face2.png"));
-        //     break;
-        //   case 3:
-        //     setDFour(require("../assets/dice/d4/d4_face3.png"));
-        //     break;
-        //   case 4:
-        //     setDFour(require("../assets/dice/d4/d4_face4.png"));
-        //     break;
-        // }
       }
       d();
     });
@@ -191,9 +100,9 @@ const DFourScreen = () => {
       }}
     >
       <View>
-        {/* <Shake value={dFour} type="timing"> */}
-        <Image style={styles.dice} source={dFour} />
-        {/* </Shake> */}
+        <Shake value={dFour} type="timing">
+          <Image style={styles.dice} source={dFour} />
+        </Shake>
       </View>
       <View>
         <TouchableOpacity onPress={rollButtonPressed}>
